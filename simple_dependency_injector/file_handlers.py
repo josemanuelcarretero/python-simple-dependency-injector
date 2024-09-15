@@ -1,5 +1,6 @@
 import importlib.util
 from typing import Any
+import json
 import yaml
 from .interfaces import IApplicationFile, IService
 
@@ -7,6 +8,11 @@ from .interfaces import IApplicationFile, IService
 def load_yaml_file(file_path: str) -> dict:
     with open(file_path, "r", encoding="utf-8") as file:
         return yaml.safe_load(file)
+
+
+def load_json_file(file_path: str) -> dict:
+    with open(file_path, "r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def import_module(module_path: str) -> Any:
@@ -24,7 +30,7 @@ def parse_services(services_data: dict) -> dict:
 
         class_name = service_data.get("class")
         arguments = service_data.get("arguments", [])
-        scope = service_data.get("scope", "singleton")
+        scope = service_data.get("scope", "ambivalent")
         factory = service_data.get("factory", None)
         tags = service_data.get("tags", [])
         instance = service_data.get("instance", None)
@@ -71,6 +77,8 @@ def parse_application_file(data: dict) -> IApplicationFile:
 def load_file(file_path: str) -> IApplicationFile:
     if file_path.endswith(".yaml") or file_path.endswith(".yml"):
         config = load_yaml_file(file_path)
+    elif file_path.endswith(".json"):
+        config = load_json_file(file_path)
     else:
         module = import_module(file_path)
         config = {

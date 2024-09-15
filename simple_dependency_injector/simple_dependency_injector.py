@@ -82,7 +82,7 @@ class DependencyInjector:
                 return [
                     self.get(key, context)
                     for key, value in self.definitions.items()
-                    if "tags" in value and arg[8:] in value.tags
+                    if getattr(value, "tags", False) and arg[8:] in value.tags
                 ]
             if arg == "!context":
                 return context or self

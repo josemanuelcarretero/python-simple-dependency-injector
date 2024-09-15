@@ -6,7 +6,7 @@ class IService:
         self,
         class_name: Optional[str] = None,
         arguments: Optional[List[str]] = None,
-        scope: Optional[str] = "singleton",
+        scope: Optional[str] = "ambivalent",
         factory: Optional[dict] = None,
         tags: Optional[List[str]] = None,
         instance: Optional[str] = None,

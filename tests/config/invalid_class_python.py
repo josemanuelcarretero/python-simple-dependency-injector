@@ -1,0 +1,7 @@
+services = {
+    "invalid_class": {
+        "class": "tests/services/my_module.py#NonExistentClass",
+    },
+}
+
+imports = []

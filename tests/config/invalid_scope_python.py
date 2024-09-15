@@ -1,0 +1,8 @@
+services = {
+    "invalid_scope": {
+        "class": "tests/services/my_module.py#MyService",
+        "scope": "invalid_scope",
+    },
+}
+
+imports = []

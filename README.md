@@ -8,7 +8,7 @@ A simple and flexible dependency injection framework for Python projects. This l
 You can install this library using pip:
 
 ```bash
-pip install dependency-injector
+pip install simple-dependency-injector
 ```
 
 ## Basic Usage
@@ -18,7 +18,7 @@ pip install dependency-injector
 First, load your service definitions from a YAML file or Python module and compile them:
 
 ```python
-from dependency_injector import DependencyInjector
+from simple_dependency_injector import DependencyInjector
 
 # Create an injector and load the service definitions
 injector = DependencyInjector(base_path='config_path')
@@ -109,20 +109,21 @@ Create a middleware to add a new dependency injection context for each request:
 
 ```python
 # middlewares.py
-from dependency_injector import DependencyInjector
+from simple_dependency_injector import DependencyInjector
 
 injector = DependencyInjector(base_path='config_path')
 injector.load('services.yaml')
 injector.compile()
 
-class DependencyInjectorMiddleware:
-    def __init__(self, get_response):
-        self.get_response = get_response
 
-    def __call__(self, request):
-        request.container = injector.create_context()
-        response = self.get_response(request)
-        return response
+class DependencyInjectorMiddleware:
+  def __init__(self, get_response):
+    self.get_response = get_response
+
+  def __call__(self, request):
+    request.container = injector.create_context()
+    response = self.get_response(request)
+    return response
 ```
 
 ### 2. Middleware for Logger Service
@@ -213,8 +214,8 @@ To set up a local development environment for this project, follow these steps:
 1. Fork this repository and clone it:
 
 ```bash
-git clone https://github.com/yourusername/dependency-injector.git
-cd dependency-injector
+git clone https://github.com/yourusername/python-simple-dependency-injector.git
+cd simple-dependency-injector
 ```
 
 2. Create a virtual environment:
@@ -240,7 +241,7 @@ Now you are ready to start working on the project. You can run tests, add new fe
 ## Check the code style
 
 ```bash
-black dependency_injector tests && pylint dependency_injector tests
+black simple_dependency_injector tests && pylint simple_dependency_injector tests
 ```
 
 ## Tests

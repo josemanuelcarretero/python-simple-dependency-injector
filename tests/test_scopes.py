@@ -1,7 +1,7 @@
 import os.path
 import unittest
 
-from dependency_injector.dependency_injector import DependencyInjector
+from simple_dependency_injector import DependencyInjector
 
 
 class TestScopes(unittest.TestCase):

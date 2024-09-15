@@ -5,7 +5,7 @@ def read_requirements(file):
         return f.read().splitlines()
 
 setup(
-    name="dependency_injector",
+    name="simple_dependency_injector",
     version="0.1.0",
     description="A simple dependency injection framework for Python",
     long_description=open("README.md").read(),

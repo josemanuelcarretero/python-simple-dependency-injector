@@ -8,6 +8,6 @@ dist/
 .env/
 
 .idea/
-dependency-injector.iml
+simple-dependency-injector.iml
 
 venv/

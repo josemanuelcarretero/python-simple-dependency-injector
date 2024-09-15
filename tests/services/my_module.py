@@ -1,3 +1,6 @@
+from typing import Any, List
+
+
 class MyService:
     def __init__(self):
         self.name = "Service"
@@ -17,6 +20,19 @@ class MyInstanceGenerator:
 MyInstance = MyInstanceGenerator()
 
 
-class AnotherService:
+class CoreService:
     def __init__(self):
+        self.name = "Core Service"
+
+
+class BaseService:
+    def __init__(self):
+        self.name = "Base Service"
+
+
+class AnotherService:
+    def __init__(self, core: CoreService, services: List[Any], context: Any):
         self.name = "Another Service"
+        self.core = core
+        self.services = services
+        self.context = context

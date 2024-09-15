@@ -1,5 +1,5 @@
-import unittest
 import os.path
+import unittest
 
 from simple_dependency_injector import DependencyInjector
 
@@ -15,7 +15,7 @@ class TestImportedServices(unittest.TestCase):
         self.assertEqual(another_service.name, "Another Service")
 
     def test_load_python_imported_service(self):
-        self.injector.load("tests/config/services_python.py")
+        self.injector.load("tests/config/services.py")
         self.injector.compile()
         another_service = self.injector.get("another_service")
         self.assertEqual(another_service.name, "Another Service")

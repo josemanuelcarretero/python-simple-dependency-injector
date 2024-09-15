@@ -1,7 +1,10 @@
 services = {
-    "my_service": {
+    "my_singleton_service": {
         "class": "tests/services/my_module.py#MyService",
         "scope": "singleton",
+    },
+    "my_service": {
+        "class": "tests/services/my_module.py#MyService",
     },
     "my_factory_service": {
         "factory": {
@@ -15,4 +18,4 @@ services = {
     },
 }
 
-imports = [{"resource": "another_services_python.py"}]
+imports = [{"resource": "another_services.py"}]
